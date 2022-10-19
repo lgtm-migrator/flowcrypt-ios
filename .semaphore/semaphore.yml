@@ -28,7 +28,6 @@ blocks:
       jobs:
         - name: Build Xcode Project + Swift Unit Test
           commands:
-            - rm -rf /var/tmp/derived_data/SourcePackages/artifacts/*
             - xcversion select 14.0
             - bundle exec fastlane build
             - bundle exec fastlane test
@@ -86,22 +85,22 @@ blocks:
             - artifact push job ~/git/flowcrypt-ios/appium/tmp
             - test-results publish ~/git/flowcrypt-ios/appium/tmp/test-results
       jobs:
-        - name: Run Mock inbox tests
-          commands:
-            - npm run-script test.mock.inbox
-        - name: Run Mock compose tests
-          commands:
-            - npm run-script test.mock.compose
-        - name: Run Mock setup tests
-          commands:
-            - npm run-script test.mock.setup
+        # - name: Run Mock inbox tests
+        #   commands:
+        #     - npm run-script test.mock.inbox
+        # - name: Run Mock compose tests
+        #   commands:
+        #     - npm run-script test.mock.compose
+        # - name: Run Mock setup tests
+        #   commands:
+        #     - npm run-script test.mock.setup
         - name: Run Mock other tests + Run Live tests
           commands:
-            - npm run-script test.mock.login
-            - sleep 3
-            - npm run-script test.mock.settings
-            - 'wget https://flowcrypt.s3.eu-central-1.amazonaws.com/release/flowcrypt-ios-old-version-for-ci-storage-compatibility-2022-05-09.zip -P ~/git/flowcrypt-ios/appium'
-            - unzip flowcrypt-ios-*.zip
+            # - npm run-script test.mock.login
+            # - sleep 3
+            # - npm run-script test.mock.settings
+            # - 'wget https://flowcrypt.s3.eu-central-1.amazonaws.com/release/flowcrypt-ios-old-version-for-ci-storage-compatibility-2022-05-09.zip -P ~/git/flowcrypt-ios/appium'
+            # - unzip flowcrypt-ios-*.zip
             - npm run-script test.live.all
       secrets:
         - name: flowcrypt-ios-ci-secrets
